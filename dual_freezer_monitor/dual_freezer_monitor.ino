@@ -101,7 +101,7 @@ void IRAM_ATTR onTimer()
 void setup() 
 {
   /* Initialize the SPI module */
-  SPI.begin(SPI_SCK, PIN_MISO, PIN_MOSI, SPI_CS); //The pins have to be mapped.
+  SPI.begin(SPI_SCK, PIN_MISO, PIN_MOSI, SPI1_CS); //The pins have to be mapped.
   
   /* Pin direction for health LED*/
   pinMode(HEALTH_LED, OUTPUT);
@@ -112,8 +112,8 @@ void setup()
   pinMode(HW_REV_BIT_2, INPUT);
   
   /* Pin direction for SPI CS*/
-  pinMode(SPI_CS, OUTPUT);
-  digitalWrite(SPI_CS, HIGH);       //The CS line shall default to high
+  pinMode(SPI1_CS, OUTPUT);
+  digitalWrite(SPI1_CS, HIGH);       //The CS line shall default to high
 
   
   Serial.begin(SERIAL_BAUD_RATE);
@@ -182,8 +182,9 @@ void loop()
     
     if(Timer100msFlag == true) 
     {
-      sensor_instance.current_temp = sensor_instance.get_temperature();
-      if(sensor_instance.current_temp >= MAX_ALLOWED_TEMP) 
+      sensor_instance.get_temperature(); // Get temperature from both sensors
+      if(sensor_instance.temp1_value >= MAX_ALLOWED_TEMP || 
+         sensor_instance.temp2_value >= MAX_ALLOWED_TEMP) 
       {
         app.timer_enabled = true;
         app.temperature_fault = true;
@@ -192,7 +193,8 @@ void loop()
           Serial.println("^Fault flag has been set.");
         }
       }
-      else if(sensor_instance.current_temp < (MAX_ALLOWED_TEMP - TEMP_FAULT_HYSTERESIS) &&
+      else if(sensor_instance.temp1_value < (MAX_ALLOWED_TEMP - TEMP_FAULT_HYSTERESIS) &&
+              sensor_instance.temp2_value < (MAX_ALLOWED_TEMP - TEMP_FAULT_HYSTERESIS) &&
               app.temperature_fault) 
       {
         app.immediate_fault_email_sent = false;  // Possible reset 
@@ -220,8 +222,10 @@ void loop()
 
       if(ENABLE_LOGGING)
         {
-          Serial.print("^Temperature Value: ");
-          Serial.println(sensor_instance.current_temp);
+          Serial.print("^Temp1 and 2 values: ");
+          Serial.print(sensor_instance.temp1_value);
+          Serial.print("   ");
+          Serial.println(sensor_instance.temp2_value);
         }
 
       if(app.heartbeat_enabled)

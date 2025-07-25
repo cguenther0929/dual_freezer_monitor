@@ -44,7 +44,11 @@ class DISP
          */
         void init(U8X8_SH1106_128X64_NONAME_HW_I2C & display_object );
 
-        //TODO need to comment
+        /**
+         * @brief Refresh the OLED display 
+         * @param \p Diaplay_Object display instance \p sensor_instance so sensor readins can be accessed 
+         * @return true if the update succeeds
+         */
         bool refresh_display(U8X8_SH1106_128X64_NONAME_HW_I2C & display_object, SENSOR & sensor_instance);
 
         /**

@@ -200,7 +200,8 @@ void LAN::send_email ( Preferences & pref, SENSOR & sensor_instance, bool fault_
  
   //Send raw text message
   String textMsg  = "";
-  textMsg += "Freezer temperature:" + String(sensor_instance.current_temp) + " F\n\n";
+  textMsg += "Freezer 1 temperature:" + String(sensor_instance.temp1_value) + " F\n\n";
+  textMsg += "Freezer 2 temperature:" + String(sensor_instance.temp2_value) + " F\n\n";
   textMsg += "Hardware Version: " + String(HW_VERSION) + "\n";
   textMsg += "Software Version: " + String(SW_VERSION) + "\n";
 

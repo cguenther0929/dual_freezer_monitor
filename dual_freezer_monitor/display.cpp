@@ -46,18 +46,25 @@ bool DISP::refresh_display (U8X8_SH1106_128X64_NONAME_HW_I2C & display_object, S
             display_object.print("HW V: ");
             display_object.print(HW_VERSION);
             
-            this -> current_oled_row += OLED_ROW_SPACING;
-            display_object.setCursor(OLED_COLUMN_START, this -> current_oled_row);
-            display_object.print("Temp: ");
-            display_object.print(sensor_instance.current_temp);
-            display_object.print("F");
             
-            this -> current_screen          = SCREEN_1; //Stay on this screen
-        break;
+            this -> current_screen          = SCREEN_2; //Move to the next screen 
+            break;
             
         case SCREEN_2:
+
             display_object.clear();
-            this -> current_screen          = SCREEN_1;
+            this -> current_oled_row = OLED_ROW_START;
+            display_object.setCursor(OLED_COLUMN_START, this -> current_oled_row);
+            display_object.print("Freezer 1: ");
+            display_object.print(sensor_instance.temp1_value); 
+            display_object.print(" F");
+            
+            this -> current_oled_row += OLED_ROW_SPACING;
+            display_object.setCursor(OLED_COLUMN_START,this -> current_oled_row);
+            display_object.print("Freezer 2: ");
+            display_object.print(sensor_instance.temp2_value); 
+            display_object.print(" F");
+            this -> current_screen          = SCREEN_1;   //Move back to screen one
         break;
             
         case SCREEN_3:  

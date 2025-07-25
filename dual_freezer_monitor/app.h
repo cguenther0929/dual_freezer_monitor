@@ -49,16 +49,16 @@
  * Define dwell time between 
  * emails 
  */
-#define HR_BETWEEN_EMAIL                12                            // Hours that will elapse between emails //TODO make sure this is a reasonable number
-#define MIN_BETWEEN_EMAIL               ((HR_BETWEEN_EMAIL) * 60)    // Min that will elapse between emails
-#define SECONDS_BETWEEN_EMAIL           ((MIN_BETWEEN_EMAIL) * 60)   // Seconds that will elapse between emails 
+#define HR_BETWEEN_EMAIL                  12                            // Hours that will elapse between emails //TODO make sure this is a reasonable number
+#define MIN_BETWEEN_EMAIL                 ((HR_BETWEEN_EMAIL) * 60)    // Min that will elapse between emails
+#define SECONDS_BETWEEN_EMAIL             ((MIN_BETWEEN_EMAIL) * 60)   // Seconds that will elapse between emails 
 
 
-#define MIN_BETWEEN_FAULT_EMAIL         10                                // Min that will elapse between emails
-#define SECONDS_BETWEEN_FAULT_EMAIL     ((MIN_BETWEEN_FAULT_EMAIL) * 10)  
+#define MIN_BETWEEN_FAULT_EMAIL           10                                // Min that will elapse between emails
+#define SECONDS_BETWEEN_FAULT_EMAIL       ((MIN_BETWEEN_FAULT_EMAIL) * 10)  
 
 
-#define SECONDS_BETWEEN_DISPLAY_UPDATES   20
+#define SECONDS_BETWEEN_DISPLAY_UPDATES   3
 
 /**
  * Application related 

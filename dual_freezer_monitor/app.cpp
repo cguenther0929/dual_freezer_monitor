@@ -8,7 +8,6 @@ SENSOR      app_sensor_functions;
 /**
  * Display parameters
  */    
-// char app_temp_buffer[32]; 
 
 void APP::init(void) 
 {
@@ -23,10 +22,6 @@ void APP::state_handler(APP & app_instance )
 
       this -> State = STATE_SLEEP;
 
-
-      /**
-       * Any code after this won't be accessed 
-       */
     break;
     
     case STATE_READ_DATA:   
