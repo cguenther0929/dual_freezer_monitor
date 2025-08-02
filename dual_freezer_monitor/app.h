@@ -40,7 +40,7 @@
 
 // ==============================
 // ==============================
-#define     SW_VERSION            "0.1.0"
+#define     SW_VERSION            "1.0.0"
 #define     HW_VERSION            "01"
 // ==============================
 // ==============================
@@ -64,7 +64,7 @@
  * Application related 
  * defines
  */
-#define MAX_ALLOWED_TEMP              82  //TODO need to adjust this to a reasonable value
+#define MAX_ALLOWED_TEMP              30
 #define TEMP_FAULT_HYSTERESIS         3
 
 /**
