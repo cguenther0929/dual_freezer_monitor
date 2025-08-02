@@ -2,7 +2,8 @@
 
 void SENSOR::init( void ) {
 
-  this -> temp_buf_index = 0;
+  this -> temp_1_buf_index = 0;
+  this -> temp_2_buf_index = 0;
   this -> just_rebooted = true;
 
 }
@@ -88,6 +89,7 @@ bool SENSOR::get_temperature( void ) {
 
     }
   }
+
   
   if(just_rebooted)
   {
@@ -99,24 +101,24 @@ bool SENSOR::get_temperature( void ) {
     
     for(i=0;i++;i<8)
     {
-      this -> temp1_buffer[this -> temp_buf_index] = temp1_value;   
-      (this -> temp_buf_index >= 7) ? (this -> temp_buf_index = 0):(this -> temp_buf_index++);
+      this -> temp1_buffer[this -> temp_1_buf_index] = temp1_value;   
+      (this -> temp_1_buf_index >= 7) ? (this -> temp_1_buf_index = 0):(this -> temp_1_buf_index++);
     }
     
     for(i=0;i++;i<8)
     {
-      this -> temp2_buffer[this -> temp_buf_index] = temp2_value;   
-      (this -> temp_buf_index >= 7) ? (this -> temp_buf_index = 0):(this -> temp_buf_index++);
+      this -> temp2_buffer[this -> temp_2_buf_index] = temp2_value;   
+      (this -> temp_2_buf_index >= 7) ? (this -> temp_2_buf_index = 0):(this -> temp_2_buf_index++);
     }
   }
   
   else
   {
-    this -> temp1_buffer[this -> temp_buf_index] = temp1_value;   
-    (this -> temp_buf_index >= 7) ? (this -> temp_buf_index = 0):(this -> temp_buf_index++);
+    this -> temp1_buffer[this -> temp_1_buf_index] = temp1_value;   
+    (this -> temp_1_buf_index >= 7) ? (this -> temp_1_buf_index = 0):(this -> temp_1_buf_index++);
     
-    this -> temp2_buffer[this -> temp_buf_index] = temp2_value;   
-    (this -> temp_buf_index >= 7) ? (this -> temp_buf_index = 0):(this -> temp_buf_index++);
+    this -> temp2_buffer[this -> temp_2_buf_index] = temp2_value;   
+    (this -> temp_2_buf_index >= 7) ? (this -> temp_2_buf_index = 0):(this -> temp_2_buf_index++);
   }
   
   temp1_sum = 0.0;   // Reset this value in preparation to calculate the average

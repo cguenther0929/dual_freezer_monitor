@@ -24,7 +24,7 @@ enum Screen {
  */
 
 
-#define OLED_COLUMN_START                       2
+#define OLED_COLUMN_START                       0
 #define OLED_ROW_START                          1
 #define OLED_ROW_SPACING                        2
 

@@ -88,7 +88,7 @@ bool LAN::WiFiConnect( const char * ssid, const char * password )
    * 20.5 (for highest RF power output, supply current ~ 80mA
    */
 
-  WiFi.setTxPower(WIFI_POWER_5dBm);
+  WiFi.setTxPower(WIFI_POWER_19dBm); 
 
 
   return true;
@@ -121,8 +121,7 @@ void LAN::send_email ( Preferences & pref, SENSOR & sensor_instance, bool fault_
    *
    * Debug port can be changed via ESP_MAIL_DEFAULT_DEBUG_PORT in ESP_Mail_FS.h
    */
-  // smtp.debug(0);  //TODO this is the line we want back in
-  smtp.debug(1);
+  smtp.debug(0);  
 
   /* Declare the Session_Config for user defined session credentials */
   Session_Config config;
@@ -172,11 +171,11 @@ void LAN::send_email ( Preferences & pref, SENSOR & sensor_instance, bool fault_
  /* Set the message headers */
   if(!fault_status) 
   {
-    message.sender.name = F("~~Freezer~~");
+    message.sender.name = F("~~Dual Freezer Update~~");
   }
   else
   {
-    message.sender.name = F("~~Freezer Fault~~");
+    message.sender.name = F("~~Dual Freezer Fault~~");
   }
   
   message.sender.email = lan_buffer;

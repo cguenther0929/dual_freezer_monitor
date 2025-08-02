@@ -40,7 +40,7 @@
 
 // ==============================
 // ==============================
-#define     SW_VERSION            "0.0.1"
+#define     SW_VERSION            "0.1.0"
 #define     HW_VERSION            "01"
 // ==============================
 // ==============================
@@ -49,7 +49,7 @@
  * Define dwell time between 
  * emails 
  */
-#define HR_BETWEEN_EMAIL                  12                            // Hours that will elapse between emails //TODO make sure this is a reasonable number
+#define HR_BETWEEN_EMAIL                  12                            // Hours that will elapse between emails 
 #define MIN_BETWEEN_EMAIL                 ((HR_BETWEEN_EMAIL) * 60)    // Min that will elapse between emails
 #define SECONDS_BETWEEN_EMAIL             ((MIN_BETWEEN_EMAIL) * 60)   // Seconds that will elapse between emails 
 
@@ -64,7 +64,7 @@
  * Application related 
  * defines
  */
-#define MAX_ALLOWED_TEMP              30
+#define MAX_ALLOWED_TEMP              82  //TODO need to adjust this to a reasonable value
 #define TEMP_FAULT_HYSTERESIS         3
 
 /**

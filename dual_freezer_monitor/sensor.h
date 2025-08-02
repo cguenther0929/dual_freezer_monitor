@@ -9,13 +9,16 @@
 #define PIN_MOSI            6
 #define PIN_MISO            5
 #define SPI_SCK             4
-#define SPI1_CS             7
-#define SPI2_CS             18
+// #define SPI1_CS             7
+#define SPI1_CS             18          // The nets got crossed in the schematic, but the fix was applied here
+// #define SPI2_CS             18
+#define SPI2_CS             7           // The nets got crossed in the schematic, but the fix was applied here
 
 class SENSOR 
 {
     private:
-        uint8_t temp_buf_index;
+        uint8_t temp_1_buf_index;
+        uint8_t temp_2_buf_index;
         bool just_rebooted;
         float temp1_buffer[8];
         float temp2_buffer[8];
@@ -24,7 +27,6 @@ class SENSOR
         
         float temp1_value;
         float temp2_value;
-        // float current_temp;  //TODO I think we can remove this line?
         
         /**
          * @brief Initialization function

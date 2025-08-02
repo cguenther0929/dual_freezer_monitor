@@ -114,6 +114,9 @@ void setup()
   /* Pin direction for SPI CS*/
   pinMode(SPI1_CS, OUTPUT);
   digitalWrite(SPI1_CS, HIGH);       //The CS line shall default to high
+  
+  pinMode(SPI2_CS, OUTPUT);
+  digitalWrite(SPI2_CS, HIGH);       //The CS line shall default to high
 
   
   Serial.begin(SERIAL_BAUD_RATE);
