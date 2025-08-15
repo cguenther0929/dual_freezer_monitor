@@ -15,6 +15,7 @@ char        console_wifi_pass[PREF_BUFF_ELEMENTS]           = {NULL};
 uint8_t     user_option                                 = 0;
 uint8_t     save_0x55                                   = 0x55;
 uint8_t     temp_uint8t                                 = 0;    
+float       temp_float                                  = 0.0;
 
 /**
  * Set to true to 
@@ -133,6 +134,8 @@ void CONSOLE::console ( Preferences & pref, SENSOR & sensor_instance )
         Serial.println("4)  View network parameters.");
         Serial.println("5)  Perform NVM test.");
         Serial.println("6) Enther network parameters.");
+        Serial.println("7)  Define temperature threshold.");
+        Serial.println("8)  View temperature threshold.");
 
         Serial.println("99) To exit the console.");
 
@@ -478,8 +481,48 @@ void CONSOLE::console ( Preferences & pref, SENSOR & sensor_instance )
             }
             break;
 
+            /************************************/ 
+            /* Define temperature threshold */ 
+            /************************************/ 
+            case 7:
+                clear_screen();
+                insert_line_feeds(2);
+                insert_line_emphasis();
+
+                /**
+                 * Clear the temporary buffer
+                 */
+                memset(console_buffer, NULL, sizeof(console_buffer));
+
+                Serial.print("What shall the temperature offset be: ");
+                temp_float = get_user_float_value();
+                Serial.println();
+
+                nvm_function.nvm_store_float(pref, PREF_THRESHOLD, temp_float);
+
+                Serial.print("\nMem read -- value stored for threshold: ");
+                Serial.println(nvm_function.nvm_get_float(pref,PREF_THRESHOLD));
 
 
+                insert_line_emphasis();
+                insert_line_feeds(2);
+            break;
+
+            /************************************/ 
+            /* View the temperature threshold */ 
+            /************************************/ 
+            case 8:
+                clear_screen();
+                insert_line_feeds(2);
+                insert_line_emphasis();
+
+                Serial.print("Temperature threshold is set to: ");
+                Serial.println(nvm_function.nvm_get_float(pref,PREF_THRESHOLD));
+
+                insert_line_emphasis();
+                insert_line_feeds(2);
+            break;
+            
             /************************************/
             /* Exit the application */
             /************************************/

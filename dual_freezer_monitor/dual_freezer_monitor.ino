@@ -164,6 +164,13 @@ void loop()
   Serial.println("====================== Reset ======================");
   app.temperature_fault = false;
 
+  sensor_instance.trip_threshold = app_nvm.nvm_get_float(pref,PREF_THRESHOLD);
+  if( sensor_instance.trip_threshold > 32 ||
+      sensor_instance.trip_threshold < -20)
+  {
+    sensor_instance.trip_threshold = MAX_ALLOWED_TEMP;
+  }
+
   while (true)
   {
 

@@ -50,15 +50,9 @@
 #define PREF_WIFI_SSID                      "wifi_ssid"
 #define PREF_WIFI_PASSWORD                  "wifi_password"
 
-#define PREF_RH_OFFSET                      "rhoffset"
+#define PREF_THRESHOLD                      "threshold"
 
-#define PREF_TEMP_OFFSET                    "tempoffset"
-
-#define PREF_STATE                          "state"
-
-#define PREF_CAL_KEY                        "cal_stat"
-
-#define NVM_NAMESPACE                       "HYG_NVM"
+#define NVM_NAMESPACE                       "FZR_NVM"
 
 /**
  * Hardcoded configuration status 

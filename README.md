@@ -19,5 +19,9 @@ Go to `Sketch > Include Library > Manage Libraries` and search for **ESP Mail Cl
 
 ### VERSIONS ###
 * v0.0.1 -- This code base compiles.  The next step will be to load it onto a board so it can be tested.  
+
 * v0.1.0 -- Ready to be deployed, however, the trip points shall first be adjusted.  
+
 * v1.0.0 -- Temperature threshold were updated.  
+
+* v1.0.1 -- Updated to allow the user to set the trip point via the CLI.  

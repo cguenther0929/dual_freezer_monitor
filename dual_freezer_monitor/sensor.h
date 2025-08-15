@@ -27,6 +27,7 @@ class SENSOR
         
         float temp1_value;
         float temp2_value;
+        float trip_threshold;
         
         /**
          * @brief Initialization function
